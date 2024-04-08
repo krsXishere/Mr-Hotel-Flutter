@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:mr_hotel/common/constant.dart';
 import 'package:mr_hotel/providers/transaksi_provider.dart';
@@ -9,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:after_layout/after_layout.dart';
 
 class ReservasiPage extends StatefulWidget {
-  final String idKamar, noKamar, kelasKamar;
+  final String idKamar, noKamar, kelasKamar, image;
   final int hargaKamar;
 
   const ReservasiPage({
@@ -18,6 +17,7 @@ class ReservasiPage extends StatefulWidget {
     required this.noKamar,
     required this.hargaKamar,
     required this.kelasKamar,
+    required this.image,
   });
 
   @override
@@ -117,6 +117,26 @@ class _ReservasiPageState extends State<ReservasiPage>
               child: Column(
                 children: [
                   Container(
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                        color: white,
+                        borderRadius:
+                            BorderRadius.circular(defaultBorderRadius),
+                        boxShadow: [
+                          primaryShadow,
+                        ]),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(defaultBorderRadius),
+                      child: Image.network(
+                        "${baseURL()}/storage/${widget.image}",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: defaultPadding,
+                  ),
+                  Container(
                     padding: EdgeInsets.all(defaultPadding),
                     width: double.maxFinite,
                     decoration: BoxDecoration(
@@ -173,21 +193,31 @@ class _ReservasiPageState extends State<ReservasiPage>
 
                       transaksiProvider.checkDateTimeRange(date);
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Pilih tanggal reservasi",
-                          style: secondaryTextStyle,
-                        ),
-                        SizedBox(
-                          width: defaultPadding,
-                        ),
-                        Icon(
-                          Icons.calendar_month,
-                          color: primaryColor,
-                        ),
-                      ],
+                    child: Container(
+                      padding: EdgeInsets.all(defaultPadding),
+                      decoration: BoxDecoration(
+                          color: white,
+                          borderRadius:
+                              BorderRadius.circular(defaultBorderRadius),
+                          boxShadow: [
+                            primaryShadow,
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Pilih tanggal reservasi",
+                            style: secondaryTextStyle,
+                          ),
+                          SizedBox(
+                            width: defaultPadding,
+                          ),
+                          Icon(
+                            Icons.calendar_month,
+                            color: primaryColor,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(

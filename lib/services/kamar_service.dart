@@ -37,6 +37,7 @@ class KamarService {
             kelasKamar: object['kelas_kamar'],
             hargaKamar: object['harga_kamar'],
             statusKamar: object['status_kamar'],
+            image: object['image'],
             createdAt: object['created_at'],
             updatedAt: object['updated_at'],
           );

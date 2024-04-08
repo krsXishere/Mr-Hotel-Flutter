@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mr_hotel/pages/reservasi_page.dart';
 import 'package:mr_hotel/providers/kamar_provider.dart';
+import 'package:mr_hotel/providers/user_provider.dart';
 import 'package:mr_hotel/widgets/empty_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,11 @@ class _DashboardPageState extends State<DashboardPage> {
       context,
       listen: false,
     ).kamar();
+
+    Provider.of<UserProvider>(
+      context,
+      listen: false,
+    ).user();
   }
 
   @override
@@ -67,6 +73,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                   noKamar: kamar.noKamar.toString(),
                                   kelasKamar: kamar.kelasKamar.toString(),
                                   hargaKamar: kamar.hargaKamar ?? 0,
+                                  image: kamar.image.toString(),
                                 ),
                                 type: PageTransitionType.rightToLeft,
                               ),

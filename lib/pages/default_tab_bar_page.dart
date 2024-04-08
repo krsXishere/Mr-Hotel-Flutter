@@ -38,11 +38,11 @@ class _DefaultTabBarPageState extends State<DefaultTabBarPage>
         ),
         bottom: TabBar(
           controller: _tabController,
-          isScrollable: true,
-          labelStyle: primaryTextStyle,
+          isScrollable: false,
+          labelStyle: secondaryTextStyle,
           tabs: const [
             Tab(text: "Beranda"),
-            Tab(text: "Riwayat Transaksi"),
+            Tab(text: "Riwayat"),
             Tab(text: "Profil"),
           ],
         ),

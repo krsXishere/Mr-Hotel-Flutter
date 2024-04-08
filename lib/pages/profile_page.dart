@@ -112,7 +112,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               BorderRadius.circular(defaultBorderRadius),
                         )),
                     onPressed: () async {
-                      if (await authProvider.signOut()) {
+                      if (await authProvider.signOut() &&
+                          authProvider.authModel!.status == 200) {
                         navigate();
                       } else {
                         showSnackBar(

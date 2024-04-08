@@ -6,8 +6,16 @@ double defaultPadding = 20;
 double defaultBorderRadius = 15;
 
 String baseAPIURL() {
-  return "https://mr-hotel.byraq-tech.com/api";
+  return "${baseURL()}/api";
 }
+
+String baseURL() {
+  return "https://mr-hotel.byraq-tech.com";
+}
+
+// String baseAPIURL() {
+//   return "https://mr-hotel.byraq-tech.com/api";
+// }
 
 Map<String, String> header(
   bool isNeedToken, {
