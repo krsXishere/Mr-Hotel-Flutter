@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:after_layout/after_layout.dart';
 
 class ReservasiPage extends StatefulWidget {
-  final String idKamar, noKamar, kelasKamar, image;
+  final String idKamar, noKamar, kelasKamar, image, tag;
   final int hargaKamar;
 
   const ReservasiPage({
@@ -18,6 +18,7 @@ class ReservasiPage extends StatefulWidget {
     required this.hargaKamar,
     required this.kelasKamar,
     required this.image,
+    required this.tag,
   });
 
   @override
@@ -127,9 +128,12 @@ class _ReservasiPageState extends State<ReservasiPage>
                         ]),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(defaultBorderRadius),
-                      child: Image.network(
-                        "${baseURL()}/storage/${widget.image}",
-                        fit: BoxFit.cover,
+                      child: Hero(
+                        tag: widget.tag,
+                        child: Image.network(
+                          "${baseImageURL()}/${widget.image}",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -224,12 +228,15 @@ class _ReservasiPageState extends State<ReservasiPage>
                     height: defaultPadding,
                   ),
                   CustomTextFormFieldWidget(
-                    hintText: "Bayar",
-                    label: "Bayar",
+                    hintText: "",
+                    label: "",
+                    isBayar: true,
+                    showLabel: false,
                     isPasswordField: false,
                     controller: totalBayarController,
                     type: TextInputType.number,
                     isNumber: true,
+                    isFilled: true,
                     onTap: () {},
                   ),
                   SizedBox(

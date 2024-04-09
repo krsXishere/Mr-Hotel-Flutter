@@ -43,6 +43,7 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   intl: ^0.18.1
   after_layout: ^1.2.0
+  mask_text_input_formatter: ^2.9.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 double defaultPadding = 20;
 double defaultBorderRadius = 15;
@@ -12,6 +13,16 @@ String baseAPIURL() {
 String baseURL() {
   return "https://mr-hotel.byraq-tech.com";
 }
+
+String baseImageURL() {
+  return "${baseURL()}/storage";
+}
+
+var maskFormatter = MaskTextInputFormatter(
+  mask: '##,###,###,###', 
+  filter: { "#": RegExp(r'[0-9]') },
+  type: MaskAutoCompletionType.lazy
+);
 
 // String baseAPIURL() {
 //   return "https://mr-hotel.byraq-tech.com/api";
